@@ -86,10 +86,10 @@ if not exist %ql_tools_dir%/%ql_cmake_name% (
 	echo unzip cmake done.
 )
 
-@REM if not exist %ql_tools_dir%/mingw64 ( 
-@REM 	%cmd_7z% x -y %ql_tools_dir%/%ql_mingw_name%.7z -o%ql_tools_dir% || ( echo ------------unzip mingw failed------------- & set ret=1 & goto exit)
-@REM 	echo unzip mingw done.
-@REM )
+if not exist %ql_tools_dir%/mingw64 ( 
+	%cmd_7z% x -y %ql_tools_dir%/%ql_mingw_name%.7z -o%ql_tools_dir% || ( echo ------------unzip mingw failed------------- & set ret=1 & goto exit)
+	echo unzip mingw done.
+)
 
 call :add_path %ql_tools_dir%/%ql_cmake_name%/bin/
 call :add_path %ql_tools_dir%/mingw64/bin/
